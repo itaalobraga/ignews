@@ -1,0 +1,21 @@
+{
+  "id": "18c9343b-4f14-4c00-8230-75e8200270b2",
+  "uid": "nostrum-dolores-ipsa",
+  "type": "publication",
+  "data": {
+    "title": [
+      {
+        "type": "paragraph",
+        "text": "Aliquip incididunt id esse deserunt deserunt aliquip aliqua excepteur non. Irure pariatur officia nulla.",
+        "spans": []
+      }
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Irure tempor velit ut anim. Magna ipsum nisi dolore laboris sint aliqua tempor cupidatat.",
+        "spans": []
+      }
+    ]
+  }
+}
