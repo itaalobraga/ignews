@@ -17,7 +17,7 @@ export async function saveSubscription(
         id: subscription.id,
         userId: userRef,
         status: subscription.status,
-        price_id: subscription.items.data[0].price.id,
+        price_1KwY6JCLUsQpBEPE2aUSQtaHid: subscription.items.data[0].price.id,
     };
 
     if (createAction) {
@@ -29,15 +29,10 @@ export async function saveSubscription(
             q.Replace(
                 q.Select(
                     "ref",
-                    q.Get(
-                        q.Match(
-                            q.Index('subscription_by_id'),
-                            subscriptionId,
-                        )
-                    )
+                    q.Get(q.Match(q.Index("subscription_by_id"), subscriptionId))
                 ),
-                {data: subscriptionData}
+                { data: subscriptionData }
             )
-        )
+        );
     }
 }
