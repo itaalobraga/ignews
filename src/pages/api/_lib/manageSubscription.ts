@@ -17,7 +17,7 @@ export async function saveSubscription(
         id: subscription.id,
         userId: userRef,
         status: subscription.status,
-        price_1KwY6JCLUsQpBEPE2aUSQtaHid: subscription.items.data[0].price.id,
+        price_id: subscription.items.data[0].price.id,
     };
 
     if (createAction) {
