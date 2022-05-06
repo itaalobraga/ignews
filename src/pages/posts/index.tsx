@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { getPrismicClient } from '../../services/prismic'
 import { RichText } from 'prismic-dom'
 import styles from '../../styles/pages/posts.module.scss'
+import Link from 'next/link'
 
 type PostsProps = {
     posts: Post[];
@@ -24,15 +25,13 @@ export default function Posts({ posts }: PostsProps) {
             <main className={styles.container}>
                 <div className={styles.posts}>
                     {posts.map((post) => (
-                        <a href="#" key={post.title}>
-                            <time>{post.updatedAt}</time>
-                            <strong>
-                                {post.title}
-                            </strong>
-                            <p>
-                                {post.excerpt}
-                            </p>
-                        </a>
+                        <Link href={`/posts/${post.slug}`} key={post.title} passHref>
+                            <a>
+                                <time>{post.updatedAt}</time>
+                                <strong>{post.title}</strong>
+                                <p>{post.excerpt}</p>
+                            </a>
+                        </Link>
                     ))}
                 </div>
             </main>
@@ -45,18 +44,17 @@ export const getStaticProps: GetStaticProps = async () => {
     const prismic = getPrismicClient()
 
     const response = await prismic.getByType('publication')
-    console.log("response => ", response)
     
     const posts = response.results.map(post => {
         return {
             slug: post.uid,
             title: RichText.asText(post.data.title),
-            excerpt: post.data.content.find(content => content.type === 'paragraph')?.text ?? '',
-            updatedAt: new Date(post.last_publication_date).toLocaleDateString('pt-br', {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric'
-            })
+            excerpt: RichText.asText(post.data.content).slice(0, 350) + "...",
+            updatedAt: new Date(post.last_publication_date).toLocaleDateString("pt-br", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+            }),
         };
     })
 

@@ -3,10 +3,12 @@ import styles from './styles.module.scss'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { ActiveLink } from '../ActiveLink'
 
 type HeaderProps = {}
 
 export const Header = (props: HeaderProps) => {
+
     return (
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
@@ -16,12 +18,12 @@ export const Header = (props: HeaderProps) => {
                     </a>
                 </Link>
                 <nav>
-                    <Link href="/" passHref>
+                    <ActiveLink activeClassName={styles.active} href="/" passHref>
                         <a className={styles.active}>Home</a>
-                    </Link>
-                    <Link href="/posts" passHref>
+                    </ActiveLink>
+                    <ActiveLink activeClassName={styles.active} href="/posts" passHref>
                         <a>Posts</a>
-                    </Link>
+                    </ActiveLink>
                 </nav>
                 <SignInButton />
             </div>

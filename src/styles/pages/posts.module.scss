@@ -10,6 +10,7 @@
 
     a {
         display: block;
+        
 
         & + a {
             margin-top: 2rem;
@@ -36,6 +37,9 @@
             color: var(--gray-300);
             margin-top: 0.5rem;
             line-height: 1.625rem;
+            background: linear-gradient(var(--gray-100), transparent);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         &:hover strong {
